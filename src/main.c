@@ -29,6 +29,10 @@
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include <asf.h>
+#include <xmega_a1_xplained/led.h>
+#include <xmega_a1_xplained/xmega_a1_xplained.h>
+
+void blink(void);
 
 int main (void)
 {
@@ -42,4 +46,9 @@ int main (void)
     }
 
 	/* Insert application code here, after the board has been initialized. */
+}
+
+void blink()
+{
+    LED_Toggle(LED0_GPIO);
 }

@@ -3,27 +3,27 @@ XMega-A1-XPlored.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000003f0  00000000  00000000  00000054  2**1
+  0 .text         000003f4  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .comment      00000030  00000000  00000000  00000444  2**0
+  1 .comment      00000030  00000000  00000000  00000448  2**0
                   CONTENTS, READONLY
-  2 .debug_aranges 00000060  00000000  00000000  00000474  2**0
+  2 .debug_aranges 00000068  00000000  00000000  00000478  2**0
                   CONTENTS, READONLY, DEBUGGING
-  3 .debug_info   00000df0  00000000  00000000  000004d4  2**0
+  3 .debug_info   00001137  00000000  00000000  000004e0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_abbrev 0000025a  00000000  00000000  000012c4  2**0
+  4 .debug_abbrev 00000374  00000000  00000000  00001617  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_line   00000faf  00000000  00000000  0000151e  2**0
+  5 .debug_line   00000fd6  00000000  00000000  0000198b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_frame  00000078  00000000  00000000  000024d0  2**2
+  6 .debug_frame  00000088  00000000  00000000  00002964  2**2
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_str    00026a18  00000000  00000000  00002548  2**0
+  7 .debug_str    00026a4d  00000000  00000000  000029ec  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_loc    00000066  00000000  00000000  00028f60  2**0
+  8 .debug_loc    00000066  00000000  00000000  00029439  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_ranges 00000030  00000000  00000000  00028fc6  2**0
+  9 .debug_ranges 00000038  00000000  00000000  0002949f  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_macro  00000ab8  00000000  00000000  00028ff6  2**0
+ 10 .debug_macro  00000abc  00000000  00000000  000294d7  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -294,7 +294,7 @@ Disassembly of section .text:
  208:	1a be       	out	0x3a, r1	; 58
  20a:	1b be       	out	0x3b, r1	; 59
  20c:	eb d0       	rcall	.+470    	; 0x3e4 <main>
- 20e:	ee c0       	rjmp	.+476    	; 0x3ec <_exit>
+ 20e:	f0 c0       	rjmp	.+480    	; 0x3f0 <_exit>
 
 00000210 <__bad_interrupt>:
  210:	f7 ce       	rjmp	.-530    	; 0x0 <__vectors>
@@ -592,14 +592,19 @@ int main (void)
 	board_init();
  3e4:	3e df       	rcall	.-388    	; 0x262 <board_init>
 
-	/* Insert application code here, after the board has been initialized. */
-}
- 3e6:	80 e0       	ldi	r24, 0x00	; 0
- 3e8:	90 e0       	ldi	r25, 0x00	; 0
- 3ea:	08 95       	ret
+__always_inline static void arch_ioport_toggle_pin_level(ioport_pin_t pin)
+{
+	PORT_t *base = arch_ioport_pin_to_base(pin);
 
-000003ec <_exit>:
- 3ec:	f8 94       	cli
+	base->OUTTGL = arch_ioport_pin_to_mask(pin);
+ 3e6:	e0 e8       	ldi	r30, 0x80	; 128
+ 3e8:	f6 e0       	ldi	r31, 0x06	; 6
+ 3ea:	81 e0       	ldi	r24, 0x01	; 1
+ 3ec:	87 83       	std	Z+7, r24	; 0x07
+ 3ee:	fe cf       	rjmp	.-4      	; 0x3ec <main+0x8>
 
-000003ee <__stop_program>:
- 3ee:	ff cf       	rjmp	.-2      	; 0x3ee <__stop_program>
+000003f0 <_exit>:
+ 3f0:	f8 94       	cli
+
+000003f2 <__stop_program>:
+ 3f2:	ff cf       	rjmp	.-2      	; 0x3f2 <__stop_program>

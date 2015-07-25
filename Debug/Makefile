@@ -58,13 +58,11 @@ SUBDIRS :=  \
 ../src/ASF/xmega/utils/assembler/ \
 ../src/ASF/xmega/utils/bit_handling/ \
 ../src/ASF/xmega/utils/preprocessor/ \
-../src/config/ \
-../src/blink
+../src/config/
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../src/blink/blink.c \
 ../src/ASF/common/services/clock/xmega/sysclk.c \
 ../src/ASF/common/services/ioport/xmega/ioport_compat.c \
 ../src/ASF/xmega/boards/xmega_a1_xplained/init.c \
@@ -79,7 +77,6 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-src/blink/blink.o \
 src/ASF/common/services/clock/xmega/sysclk.o \
 src/ASF/xmega/drivers/cpu/ccp.o \
 src/ASF/common/services/ioport/xmega/ioport_compat.o \
@@ -87,7 +84,6 @@ src/ASF/xmega/boards/xmega_a1_xplained/init.o \
 src/main.o
 
 OBJS_AS_ARGS +=  \
-src/blink/blink.o \
 src/ASF/common/services/clock/xmega/sysclk.o \
 src/ASF/xmega/drivers/cpu/ccp.o \
 src/ASF/common/services/ioport/xmega/ioport_compat.o \
@@ -95,7 +91,6 @@ src/ASF/xmega/boards/xmega_a1_xplained/init.o \
 src/main.o
 
 C_DEPS +=  \
-src/blink/blink.d \
 src/ASF/common/services/clock/xmega/sysclk.d \
 src/ASF/xmega/drivers/cpu/ccp.d \
 src/ASF/common/services/ioport/xmega/ioport_compat.d \
@@ -103,7 +98,6 @@ src/ASF/xmega/boards/xmega_a1_xplained/init.d \
 src/main.d
 
 C_DEPS_AS_ARGS +=  \
-src/blink/blink.d \
 src/ASF/common/services/clock/xmega/sysclk.d \
 src/ASF/xmega/drivers/cpu/ccp.d \
 src/ASF/common/services/ioport/xmega/ioport_compat.d \
@@ -132,15 +126,6 @@ LINKER_SCRIPT_DEP+=
 
 
 
-
-
-
-src/blink/%.o: ../src/blink/%.c
-	@echo Building file: $<
-	@echo Invoking: AVR/GNU C Compiler : 4.8.1
-	$(QUOTE)C:\Program Files (x86)\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.1061\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -DDEBUG -DIOPORT_XMEGA_COMPAT -DBOARD=XMEGA_A1_XPLAINED  -I"../common/applications/user_application/atxmega128a1_xmega_a1_xplained/config" -I"../src/ASF/xmega/utils" -I"../src/ASF/xmega/boards/xmega_a1_xplained" -I"../src/ASF/common/boards" -I"../src/ASF/xmega/boards" -I"../src/config" -I"../src/ASF/xmega/utils/preprocessor" -I"../src/ASF/common/utils" -I"../src/ASF/common/services/ioport" -I"../src" -I"../src/ASF/common/services/gpio" -I"../src/ASF/xmega/drivers/cpu" -I"../src/ASF/common/services/clock" -I"../src/ASF/common/services/delay"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g3 -Wall -mmcu=atxmega128a1 -c -std=gnu99 -fno-strict-aliasing -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
-	@echo Finished building: $<
-	
 
 src/ASF/common/services/clock/xmega/%.o: ../src/ASF/common/services/clock/xmega/%.c
 	@echo Building file: $<

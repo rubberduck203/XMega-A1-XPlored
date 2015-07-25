@@ -2,8 +2,6 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-src\blink\blink.c
-
 src\ASF\common\services\clock\xmega\sysclk.c
 
 src\ASF\xmega\drivers\cpu\ccp.s

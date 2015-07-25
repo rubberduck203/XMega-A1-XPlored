@@ -47,6 +47,7 @@ src/main.d src/main.o: ../src/main.c ../src/asf.h \
  ../src/ASF/common/services/ioport/xmega/ioport_compat.h \
  ../src/ASF/common/services/ioport/xmega/../ioport.h \
  ../src/ASF/xmega/utils/status_codes.h \
+ ../src/ASF/xmega/boards/xmega_a1_xplained/led.h \
  ../src/ASF/xmega/boards/xmega_a1_xplained/led.h
 
 ../src/asf.h:
@@ -150,5 +151,7 @@ c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-g
 ../src/ASF/common/services/ioport/xmega/../ioport.h:
 
 ../src/ASF/xmega/utils/status_codes.h:
+
+../src/ASF/xmega/boards/xmega_a1_xplained/led.h:
 
 ../src/ASF/xmega/boards/xmega_a1_xplained/led.h:

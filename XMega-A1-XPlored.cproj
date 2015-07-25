@@ -264,12 +264,8 @@
     <Folder Include="src\ASF\xmega\utils\bit_handling\" />
     <Folder Include="src\ASF\xmega\utils\preprocessor\" />
     <Folder Include="src\config\" />
-    <Folder Include="src\blink" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\blink\blink.c">
-      <SubType>compile</SubType>
-    </Compile>
     <None Include="src\ASF\common\services\delay\xmega\cycle_counter.h">
       <SubType>compile</SubType>
     </None>
