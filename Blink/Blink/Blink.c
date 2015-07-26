@@ -8,6 +8,12 @@
 #include <stdint.h>
 #include "led.h"
 
+#ifdef DEBUG
+    #define DELAYITERATIONS 0
+#else
+    #define DELAYITERATIONS 10000
+#endif 
+
 void delay(volatile uint32_t d)
 {
     while (d-- != 0)     // loops while non-0 and decrements
@@ -23,7 +29,7 @@ int main(void)
         for (int i = 0; i < 8; i++)
         {
             toggleLights(i);
-            delay(10000);
+            delay(DELAYITERATIONS);
         }
     }
 }
