@@ -25,7 +25,7 @@ int main(void)
         for (int i = 0; i < 8; i++)
         {
             PORTE_OUT = ~(1 << i);
-            delay(1000);
+            delay(10000);
         }
     }
 }
