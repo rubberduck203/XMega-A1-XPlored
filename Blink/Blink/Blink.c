@@ -7,6 +7,7 @@
 
 #include <stdint.h>
 #include "led.h"
+#include "bool.h"
 
 #ifdef DEBUG
     #define DELAYITERATIONS 0
@@ -24,7 +25,7 @@ int main(void)
 {
     init();
     
-    while(1)
+    while(true)
     {
         for (int i = 0; i < 8; i++)
         {

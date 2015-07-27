@@ -132,10 +132,13 @@
     <Compile Include="Blink.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Led.c">
+    <Compile Include="bool.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Led.h">
+    <Compile Include="led.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="led.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
