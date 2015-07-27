@@ -21,4 +21,4 @@ The ATxMegaA is programmable via USART over a usb connection. This requires the 
 
 - [AVR-LibC API documentation](http://www.nongnu.org/avr-libc/user-manual/index.html)
 - [Atmel ATxMegaA1 Xplained documentation](http://www.atmel.com/tools/XMEGA-A1XPLAINED.aspx?tab=documents)
-- [Atmel ATxMega128A1 documentation]: http://www.atmel.com/devices/ATXMEGA128A1.aspx
+- [Atmel ATxMega128A1 documentation](http://www.atmel.com/devices/ATXMEGA128A1.aspx?tab=documents)
