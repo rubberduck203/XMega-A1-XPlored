@@ -23,7 +23,7 @@ void delay(volatile uint32_t d)
 
 int main(void)
 {
-    init();
+    initLights();
     
     while(true)
     {

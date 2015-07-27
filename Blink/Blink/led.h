@@ -11,5 +11,5 @@
 
 typedef uint8_t light_positions;
 
-void init(void);
+void initLights(void);
 void setLights(light_positions lights);

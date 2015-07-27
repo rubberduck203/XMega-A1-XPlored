@@ -9,7 +9,7 @@
 
 #define LEDPORT_DIR PORTE_DIR
 
-void init(void)
+void initLights(void)
 {
     LEDPORT_DIR = 0b11111111; //Configure LED port for output
     LEDPORT = 0b11111111; //LEDs are active low, this makes sure they're off on start up
