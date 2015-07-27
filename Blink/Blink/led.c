@@ -7,6 +7,8 @@
 
 #include "led.h"
 
+#define LEDPORT_DIR PORTE_DIR
+
 void init(void)
 {
     LEDPORT_DIR = 0b11111111; //Configure LED port for output

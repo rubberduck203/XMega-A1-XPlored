@@ -8,7 +8,6 @@
 #include <avr/io.h>
 
 #define LEDPORT PORTE_OUT
-#define LEDPORT_DIR PORTE_DIR
 
 void init(void);
 void toggleLights(int ledPosition);
