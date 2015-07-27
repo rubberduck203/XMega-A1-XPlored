@@ -2,7 +2,7 @@
  * led.c
  *
  * Created: 7/26/2015 3:10:08 PM
- *  Author: Christopher
+ *  Author: Christopher McClellan
  */ 
 
 #include "led.h"
@@ -18,4 +18,21 @@ void initLights(void)
 void setLights(light_positions lights)
 {
     LEDPORT = lights;
+}
+
+//terribly bad busy-loop wait, replace this
+void delay(volatile uint32_t d)
+{
+    while (d-- != 0)     // loops while non-0 and decrements
+    ;
+}
+
+void blinkInSequence(int seconds)
+{
+    //left shift until it overflows after the 8th light
+    for (light_positions lights = 1; lights != 0; lights <<= 1) {
+        setLights(lights);
+        
+        delay(seconds);
+    }
 }

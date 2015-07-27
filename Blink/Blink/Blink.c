@@ -13,13 +13,7 @@
     #define DELAYITERATIONS 0
 #else
     #define DELAYITERATIONS 10000
-#endif 
-
-void delay(volatile uint32_t d)
-{
-    while (d-- != 0)     // loops while non-0 and decrements
-    ;
-}
+#endif
 
 int main(void)
 {
@@ -27,11 +21,6 @@ int main(void)
     
     while(true)
     {
-        //left shift until it overflows after the 8th light
-        for (light_positions lights = 1; lights != 0; lights <<= 1) {
-            setLights(lights);
-            
-            delay(DELAYITERATIONS);
-        }
+        blinkInSequence(DELAYITERATIONS);
     }
 }
