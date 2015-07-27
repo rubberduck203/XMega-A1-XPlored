@@ -15,8 +15,7 @@ void init(void)
     LEDPORT = 0b11111111; //LEDs are active low, this makes sure they're off on start up
 }
 
-//Turns light at provided port pin on and all others off.
-void toggleLights(int ledPosition)
+void setLights(light_positions lights)
 {
-    LEDPORT = ~(1 << ledPosition);
+    LEDPORT = lights;
 }

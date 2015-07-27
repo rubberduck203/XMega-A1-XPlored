@@ -9,5 +9,7 @@
 
 #define LEDPORT PORTE_OUT
 
+typedef uint8_t light_positions;
+
 void init(void);
-void toggleLights(int ledPosition);
+void setLights(light_positions lights);

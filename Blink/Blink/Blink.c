@@ -27,9 +27,10 @@ int main(void)
     
     while(true)
     {
-        for (int i = 0; i < 8; i++)
-        {
-            toggleLights(i);
+        //left shift until it overflows after the 8th light
+        for (light_positions lights = 1; lights != 0; lights <<= 1) {
+            setLights(lights);
+            
             delay(DELAYITERATIONS);
         }
     }
