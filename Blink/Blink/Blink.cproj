@@ -132,9 +132,6 @@
     <Compile Include="Blink.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="bool.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="led.c">
       <SubType>compile</SubType>
     </Compile>

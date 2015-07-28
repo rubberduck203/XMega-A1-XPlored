@@ -7,7 +7,7 @@
 
 #include <stdint.h>
 #include "led.h"
-#include "bool.h"
+#include <stdbool.h>
 
 #ifdef DEBUG
     #define DELAYITERATIONS 0
