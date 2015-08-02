@@ -20,7 +20,7 @@ ISR(TCC0_OVF_vect)
         currentLightPosition = 0;
     }
     
-    LEDPORT = ~(1 << currentLightPosition);
+    LED_PORT = ~(1 << currentLightPosition);
     
     currentLightPosition++;
 }
@@ -28,7 +28,7 @@ ISR(TCC0_OVF_vect)
 int main(void)
 {
     initLeds();
-    startTimer();
+    startLedTimer();
     
     // enable global interrupts:
     sei();

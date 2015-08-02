@@ -1,22 +1,31 @@
 /*
- * led.h
- *
- * Created: 7/26/2015 2:55:00 PM
- *  Author: Christopher McClellan
- */ 
+* led.h
+*
+* Created: 7/26/2015 2:55:00 PM
+*  Author: Christopher McClellan
+*/
 
 #include <avr/io.h>
 
-#define LEDPORT PORTE_OUT
+#define LED_PORT PORTE_OUT //alias PORTE as LEDPORT for a better abstraction
 
-//see startTimer for comment
+// Default System Clock is 2MHz; (2,000,000ticks/sec)
+// 65,535 ticks in default Period (16 bit integer)
+//
+// Clock/Prescaler/Period = Light Cycles/sec
+// 2,000,000/64/65,535 = 31,250/65,535 = 1 overflow/0.4768444 secs =~ 2 overflows/sec == 2Hz light cycle
+
+// TODO: get a more precise 2Hz lights cycle (use a compare or a different period?)
+// TODO: change to a 4Hz cycle
+
+// debugging with the simulator is slow, use a faster clock for debug.
 #ifdef DEBUG
 #define LED_CLOCK TC_CLKSEL_DIV1_gc
 #else
 #define LED_CLOCK TC_CLKSEL_DIV64_gc
 #endif
 
-//see startTimer for comment
+// debugging with the simulator is slow, use a faster clock for debug.
 #ifdef DEBUG
 #define LED_PERIOD 0x01;
 #else
@@ -26,7 +35,6 @@
 typedef uint8_t Lights;
 
 void initLeds(void);
-void startTimer(void);
+void startLedTimer(void);
 
 void setLights(Lights lights);
-void blinkInSequence(int seconds);
