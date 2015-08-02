@@ -11,18 +11,22 @@
 
 #include "led.h"
 
-volatile uint8_t currentLightPosition = 0;
-
 ISR(TCC0_OVF_vect)
-{
-    if (currentLightPosition > 7)
-    {
-        currentLightPosition = 0;
+{    
+    // LEDs are active low, so invert the lights 
+    //  and shift left to get next active light.
+    Lights newLightPosition = (~LED_PORT) << 1;
+    
+    // If lights are off after shifting, we get a 0.
+    if (!newLightPosition) 
+    { 
+        // restart the sequence by lighting the first light.
+        newLightPosition = 0b00000001;
     }
     
-    LED_PORT = ~(1 << currentLightPosition);
-    
-    currentLightPosition++;
+    // We have something like 0b00010000 right now.
+    //  Invert it back before assigning lights back
+    setLights(~newLightPosition);
 }
 
 int main(void)
