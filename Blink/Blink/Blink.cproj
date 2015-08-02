@@ -169,6 +169,9 @@
     <Compile Include="led.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="switches.h">
+      <SubType>compile</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\" />
