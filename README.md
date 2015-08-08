@@ -21,6 +21,18 @@ The ATxMegaA is programmable via USART over a usb connection. This requires the 
 
 The LEDs are hooked into PORTE in the hardware, but should not be accessed directly through PORTE, but thought the LEDPORT macro. The timer for the Light Runner "marquee" is the first TimerCounter (TC0) on PORTC.
 
+|Port|Pin|Peripheral|Desc
+|----|---|----------|----------------------------
+|C   |0  |Timer     | Controls the Led blink rate
+|E   |0  |Led0      |
+|E   |1  |Led1      |
+|E   |2  |Led2      |
+|E   |3  |Led3      |
+|E   |4  |Led4      |
+|E   |5  |Led5      |
+|E   |6  |Led6      |
+|E   |7  |Led7      |
+
 ## Resources
 
 - [AVR-LibC API documentation](http://www.nongnu.org/avr-libc/user-manual/index.html)
